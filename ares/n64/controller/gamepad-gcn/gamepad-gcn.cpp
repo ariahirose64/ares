@@ -142,7 +142,7 @@ auto GamepadGCN::poll() -> void {
   //positive above the origin, so the vertical axes are inverted
   state.stickX  = u8(OriginStick  + s8(+ax));
   state.stickY  = u8(OriginStick  + s8(-ay));
-  state.cstickX = u8(OriginCStick + s8(+bx));
+  state.cstickX = u8(OriginCStick + s8(-bx));
   state.cstickY = u8(OriginCStick + s8(-by));
   state.analogL = triggerValue(lAnalog);
   state.analogR = triggerValue(rAnalog);
@@ -203,15 +203,15 @@ auto GamepadGCN::writeAnalogMode(n8 mode, n8 output[]) -> void {
   switch(mode) {
 
   case 1:
-    output[4] = state.cstickX & 0xf0 | state.cstickY >> 4;
+    output[4] = (state.cstickX & 0xf0) | (state.cstickY >> 4);
     output[5] = state.analogL;
     output[6] = state.analogR;
     output[7] = 0x00;  //analog A and B
     break;
 
   case 2:
-    output[4] = state.cstickX & 0xf0 | state.cstickY >> 4;
-    output[5] = state.analogL & 0xf0 | state.analogR >> 4;
+    output[4] = (state.cstickX & 0xf0) | (state.cstickY >> 4);
+    output[5] = (state.analogL & 0xf0) | (state.analogR >> 4);
     output[6] = 0x00;  //analog A
     output[7] = 0x00;  //analog B
     break;
@@ -234,7 +234,7 @@ auto GamepadGCN::writeAnalogMode(n8 mode, n8 output[]) -> void {
   default:
     output[4] = state.cstickX;
     output[5] = state.cstickY;
-    output[6] = state.analogL & 0xf0 | state.analogR >> 4;
+    output[6] = (state.analogL & 0xf0) | (state.analogR >> 4);
     output[7] = 0x00;  //analog A and B
     break;
 

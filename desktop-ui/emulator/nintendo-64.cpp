@@ -48,10 +48,10 @@ Nintendo64::Nintendo64() {
     device.analog ("L-Down",    virtualPorts[id].pad.lstick_down);
     device.analog ("L-Left",    virtualPorts[id].pad.lstick_left);
     device.analog ("L-Right",   virtualPorts[id].pad.lstick_right);
-    device.analog ("C-Up",      virtualPorts[id].pad.rstick_up);
-    device.analog ("C-Down",    virtualPorts[id].pad.rstick_down);
-    device.analog ("C-Left",    virtualPorts[id].pad.rstick_left);
-    device.analog ("C-Right",   virtualPorts[id].pad.rstick_right);
+    device.analog ("C-Stick Up",    virtualPorts[id].pad.rstick_up);
+    device.analog ("C-Stick Down",  virtualPorts[id].pad.rstick_down);
+    device.analog ("C-Stick Left",  virtualPorts[id].pad.rstick_left);
+    device.analog ("C-Stick Right", virtualPorts[id].pad.rstick_right);
     device.digital("Up",        virtualPorts[id].pad.up);
     device.digital("Down",      virtualPorts[id].pad.down);
     device.digital("Left",      virtualPorts[id].pad.left);
@@ -60,9 +60,9 @@ Nintendo64::Nintendo64() {
     device.digital("B",         virtualPorts[id].pad.west);
     device.digital("X",         virtualPorts[id].pad.east);
     device.digital("Y",         virtualPorts[id].pad.north);
-    device.digital("L",         virtualPorts[id].pad.l_bumper);
-    device.digital("R",         virtualPorts[id].pad.r_bumper);
-    device.digital("Z",         virtualPorts[id].pad.r_trigger);
+    device.digital("L",         virtualPorts[id].pad.l_trigger);
+    device.digital("R",         virtualPorts[id].pad.r_trigger);
+    device.digital("Z",         virtualPorts[id].pad.r_bumper);
     device.digital("Start",     virtualPorts[id].pad.start);
     device.absolute("L-Analog", virtualPorts[id].pad.l_trigger);
     device.absolute("R-Analog", virtualPorts[id].pad.r_trigger);
